@@ -13,7 +13,7 @@ public class ObstacleSpawner : MonoBehaviour {
 	}
 	private void Spawn()
 	{
-		Instantiate (gameObjects [Random.Range (0, gameObjects.GetLength (0))], transform.position, Quaternion.identity);
+		Instantiate (gameObjects [Random.Range (0, gameObjects.GetLength (0))], new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity);
 		Invoke("Spawn",Random.Range(spawnMin,spawnMax));
 	}
 }

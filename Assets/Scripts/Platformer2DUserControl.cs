@@ -3,25 +3,16 @@
 [RequireComponent(typeof(PlatformerCharacter2D))]
 public class Platformer2DUserControl : MonoBehaviour 
 {
+	public static float speed=1;
 	private PlatformerCharacter2D character;
-    private bool jump;
-
+    //private bool jump;
 
 	void Awake()
 	{
 		character = GetComponent<PlatformerCharacter2D>();
 	}
 
-    void Update ()
-    {
-        // Read the jump input in Update so button presses aren't missed.
-#if CROSS_PLATFORM_INPUT
-        if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
-#else
-		if (Input.GetButtonDown("Jump")) jump = true;
-#endif
-
-    }
+  
 
 	void FixedUpdate()
 	{
@@ -35,9 +26,9 @@ public class Platformer2DUserControl : MonoBehaviour
 
 		// Pass all parameters to the character control script.
 		//character.Move( h, crouch , jump );
-		character.Move( 1, false , jump );
+		character.Move( speed, false , JumpTouchScript.jump );
 
         // Reset the jump input once it has been used.
-	    jump = false;
+		JumpTouchScript.jump = false;
 	}
 }
