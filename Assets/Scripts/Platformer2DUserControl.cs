@@ -3,7 +3,7 @@
 [RequireComponent(typeof(PlatformerCharacter2D))]
 public class Platformer2DUserControl : MonoBehaviour 
 {
-	public static float speed=1;
+	public static float speed=0.7f;
 	private PlatformerCharacter2D character;
     //private bool jump;
 

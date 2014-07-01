@@ -3,18 +3,24 @@ using System.Collections;
 
 public class GroundSpawnScript : MonoBehaviour {
 
-	public Transform player;
-	public float floorSpawnDistance=0;
+	public Transform cameraTrans;
+	public float floorSpawnDistance;
 	public Transform ground;
 
+	public float spawnMin=5f;
+	public float spawnMax=7f;
+
 	private float groundLeftX=-3.071233f;
+	private float randomDistance;
 	// Update is called once per frame
 	void Update () {
 	
-		if (player.position.x - groundLeftX > floorSpawnDistance) 
+		if (cameraTrans.position.x - groundLeftX > floorSpawnDistance) 
 		{
-			Instantiate (ground, new Vector3 (transform.position.x, -1.654969f, 0f), Quaternion.identity);
-			groundLeftX = transform.position.x;
+			randomDistance=Random.Range(spawnMin,spawnMax);
+			Debug.Log(randomDistance);
+			Instantiate (ground, new Vector3 (transform.position.x+randomDistance, -1.654969f, 0f), Quaternion.identity);
+			groundLeftX = transform.position.x+randomDistance;//-1.654969f
 		}
 
 	}

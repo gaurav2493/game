@@ -6,6 +6,7 @@ public class DestroyButton : MonoBehaviour {
 	
 	public String stickTag;
 	private GameObject[] gameObjects;
+	private int score=0;
 	// Use this for initialization
 	private void OnEnable()
 	{
@@ -30,8 +31,13 @@ public class DestroyButton : MonoBehaviour {
 		Debug.Log ("destroyed");
 		for(var i = 0 ; i < gameObjects.Length ; i ++)
 		{
+			score+=1;
 			Destroy(gameObjects[i]);
 		}
 	}
+	void OnGUI () {
+		GUI.Label (new Rect (10,10,100,50),"score = " + score);
+	}
+
 
 }

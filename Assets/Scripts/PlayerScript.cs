@@ -8,8 +8,13 @@ public class PlayerScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log("collided");	
-		//Application.LoadLevel (Application.loadedLevel);
+		Application.LoadLevel (1);
+	}
+
+	void Update()
+	{
+		if(transform.position.y<=-2f)
+		{Application.LoadLevel(1);}
 	}
 
 }
